@@ -11,8 +11,8 @@ public class DefaultMain implements Main {
 	static int maxTimeForEating = 100;
 	static int maxTimeForThinking = 100;
 	static DefaultWaiter waiter = new DefaultWaiter();
-	public static List<DefaultFork> forksList = new ArrayList<DefaultFork>();
-	public static List<DefaultPhilosopher> philosophersList = new ArrayList<DefaultPhilosopher>();
+	List<DefaultFork> forksList = new ArrayList<DefaultFork>();
+	 List<DefaultPhilosopher> philosophersList = new ArrayList<DefaultPhilosopher>();
 
 	List<Thread> workingThreads = new ArrayList<Thread>();
 

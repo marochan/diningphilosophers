@@ -32,9 +32,7 @@ public class DefaultPhilosopher implements Philosopher {
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 		}
-		if(meals == getHowMany()-1) {
-			DefaultMain.philosophersList.remove(this);
-		}
+
 	}
 
 	@Override
