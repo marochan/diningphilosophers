@@ -15,7 +15,9 @@ public class DefaultPhilosopher implements Philosopher {
 	@Override
 	public void run() {
 		int meals = 0;
+		
 		try {
+			
 			while (meals < getHowMany()) {
 				doSomething(": thinking ");
 				Thread.currentThread().sleep(DefaultMain.maxTimeForThinking);
@@ -25,10 +27,13 @@ public class DefaultPhilosopher implements Philosopher {
 				meals++;
 				doSomething(": eating meal nr: " + meals);
 				DefaultMain.waiter.put(this);
-
+				
 			}
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
+		}
+		if(meals == getHowMany()-1) {
+			DefaultMain.philosophersList.remove(this);
 		}
 	}
 

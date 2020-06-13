@@ -11,21 +11,24 @@ public class DefaultMain implements Main {
 	static int maxTimeForEating = 100;
 	static int maxTimeForThinking = 100;
 	static DefaultWaiter waiter = new DefaultWaiter();
-	static List<DefaultFork> forksList = new ArrayList<DefaultFork>();
-	static List<DefaultPhilosopher> philosophersList = new ArrayList<DefaultPhilosopher>();
+	public static List<DefaultFork> forksList = new ArrayList<DefaultFork>();
+	public static List<DefaultPhilosopher> philosophersList = new ArrayList<DefaultPhilosopher>();
 
 	List<Thread> workingThreads = new ArrayList<Thread>();
 
 	public static void main(String[] args) {
 		DefaultMain dm = new DefaultMain();
+	
 		dm.eatingThinking(howMany, numberOfPhilosophers, maxTimeForEating, maxTimeForThinking);
-		
+	
 		
 	}
 
 	@Override
 	public void eatingThinking(int howMany, int numberOfPhilosophers, int maxTimeForEating, int maxTimeForThinking) {
+		getPhilosophers();
 		DefaultPhilosopher[] philosophers = new DefaultPhilosopher[numberOfPhilosophers];
+		
 		for (int i = 0; i < numberOfPhilosophers; i++) {
 			DefaultFork df = new DefaultFork(i);
 			forksList.add(df);
@@ -52,9 +55,11 @@ public class DefaultMain implements Main {
 		
 			System.out.println(philosophersList.size());
 			System.out.println(forksList.size());
+			
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		
 	}
 
 	@Override
