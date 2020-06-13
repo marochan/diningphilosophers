@@ -6,6 +6,14 @@ public class DefaultFork implements Fork {
 	
 
 
+	public DefaultFork(int id) {
+		super();
+		this.id = id;
+	}
+
+
+
+
 	@Override
 	public int getId() {
 		return id;

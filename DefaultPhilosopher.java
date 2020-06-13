@@ -18,13 +18,21 @@ public class DefaultPhilosopher implements Philosopher {
 				Thread.currentThread().sleep(DefaultMain.maxTimeForThinking);
 				synchronized(getLeftFork()) {
 					doSomething(": picked the left fork");
+				DefaultMain.usedForks.remove(getLeftFork());
 					synchronized (getRightFork()) {
 						doSomething(": picked the right fork");
+						DefaultMain.usedForks.remove(getRightFork());
+						DefaultMain.waitingPhilosophers.remove(this);
 						Thread.currentThread().sleep(DefaultMain.maxTimeForEating);
 						meals++;
+						doSomething(": eating meal nr: " + meals);
 						doSomething(": put down the right fork");
+
+						DefaultMain.waitingPhilosophers.add(this);
+						DefaultMain.usedForks.add(getRightFork());
 					}
 					doSomething(": put down the left fork");
+					DefaultMain.usedForks.add(getLeftFork());
 				}
 			}
 		} catch (InterruptedException e ) {
